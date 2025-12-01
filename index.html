@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- Primary Meta Tags -->
+  <!-- TODO: Replace with your paper title and author names -->
+  <meta name="title" content="AgriCoT: A Chain-of-Thought Benchmark for Evaluating Reasoning in Vision-Language Models for Agriculture - Yibin Wen et al.">
+  <!-- TODO: Write a compelling 150-160 character description of your research -->
+  <meta name="description" content="A VQA dataset that incorporates Chain-of-Thought (CoT) reasoning, specifically designed to evaluate the reasoning capabilities of VLMs in agricultural domain.">
+  <!-- TODO: Add 5-10 relevant keywords for your research area -->
+  <meta name="keywords" content="AI, vision-language model, chain-of-thought benchmark, dataset, agriculture">
+  <!-- TODO: List all authors -->
+  <meta name="author" content="Yibin Wen, Qingmei Li, Zi Ye, Jiarui Zhang, Jing Wu, Zurong Mai, Shuohong Lou, Yuhang Chen, Henglian Huang, Xiaoya Fan, Yang Zhang, Lingyuan Zhao, Haohuan Fu, Huang Jianxi, Juepeng Zheng ">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <!-- TODO: Replace with your institution or lab name -->
+  <meta property="og:site_name" content="Sun Yat-sen University">
+  <!-- TODO: Same as paper title above -->
+  <meta property="og:title" content="AgriCoT: A Chain-of-Thought Benchmark for Evaluating Reasoning in Vision-Language Models for Agriculture">
+  <!-- TODO: Same as description above -->
+  <meta property="og:description" content="A VQA dataset that incorporates Chain-of-Thought (CoT) reasoning, specifically designed to evaluate the reasoning capabilities of VLMs in agricultural domain.">
+  <!-- TODO: Replace with your actual website URL -->
+  <meta property="og:url" content="https://huggingface.co/datasets/wenyb/AgriCoT">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="static\images\features\innovation.jpg">
+  <meta property="og:image:width" content="600">
+  <meta property="og:image:height" content="850">
+  <meta property="og:image:alt" content="AgriCoT - Research Preview">
+  <meta property="article:published_time" content="2025-11-30T00:00:00.000Z">
+  <meta property="article:author" content="Yibin Wen">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="vision-language model">
+  <meta property="article:tag" content="chain-of-thought benchmark">
+  <meta property="article:tag" content="agriculture">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <!-- TODO: Replace with your lab/institution Twitter handle -->
+  <meta name="twitter:site" content="@YOUR_TWITTER_HANDLE">
+  <!-- TODO: Replace with first author's Twitter handle -->
+  <meta name="twitter:creator" content="@AUTHOR_TWITTER_HANDLE">
+  <!-- TODO: Same as paper title above -->
+  <meta name="twitter:title" content="AgriCoT: A Chain-of-Thought Benchmark for Evaluating Reasoning in Vision-Language Models for Agriculture">
+  <!-- TODO: Same as description above -->
+  <meta name="twitter:description" content="A VQA dataset that incorporates Chain-of-Thought (CoT) reasoning, specifically designed to evaluate the reasoning capabilities of VLMs in agricultural domain.">
+  <!-- TODO: Same as social preview image above -->
+  <meta name="twitter:image" content="static\images\features\innovation.jpg">
+  <meta name="twitter:image:alt" content="AgriCoT - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title" content="AgriCoT: A Chain-of-Thought Benchmark for Evaluating Reasoning in Vision-Language Models for Agriculture">
+  <meta name="citation_author" content="Wen, Yibin">
+  <meta name="citation_author" content="Li, Qingmei">
+  <meta name="citation_author" content="Ye, Zi">
+  <meta name="citation_author" content="Zhang, Jiarui">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="CONFERENCE_OR_JOURNAL_NAME">
+  <meta name="citation_pdf_url" content="https://YOUR_DOMAIN.com/static/pdfs/paper.pdf">
+  
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <!-- TODO: Replace with your paper title and authors -->
+  <title>AgriCoT - Yibin Wen et al. | Academic Research</title>
+  
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/logo.png">
+  <link rel="apple-touch-icon" href="static/images/logo.png">
+  
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+  
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+  
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+  
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "AgriCoT: A Chain-of-Thought Benchmark for Evaluating Reasoning in Vision-Language Models for Agriculture",
+    "description": "A VQA dataset that incorporates Chain-of-Thought (CoT) reasoning, specifically designed to evaluate the reasoning capabilities of VLMs in agricultural domain.",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "Yibin Wen",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sun Yat-sen University"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Qingmei Li",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Tsinghua University"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Zi Ye",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sun Yat-sen University"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "Jiarui Zhang",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "Sun Yat-sen University"
+        }
+      }
+    ],
+    "datePublished": "2025-11-30",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://huggingface.co/datasets/wenyb/AgriCoT",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["AI", "vision-language model", "chain-of-thought benchmark", "dataset", "agriculture"],
+    "abstract": "Recent advancements in Vision-Language Models (VLMs) have significantly transformed various industries. In agriculture, these dual-modal capabilities offer promising applications such as precision farming, crop monitoring, pest detection, and environmental sustainability. While several Visual Question Answering (VQA) datasets and benchmarks have been developed to evaluate VLM performance, they often fail to adequately assess the critical reasoning and problem-solving skills required in complex agricultural contexts. To address this gap, we introduce AgriCoT, a VQA dataset that incorporates Chain-of-Thought (CoT) reasoning, specifically designed to evaluate the reasoning capabilities of VLMs. With 4,535 carefully curated samples, AgriCoT offers a comprehensive and robust evaluation of reasoning abilities for VLMs, particularly in zero-shot scenarios, by focusing on their capacity to engage in logical reasoning and effective problem-solving. Our evaluations, conducted with 26 representative VLMs, including both proprietary and open-source models, reveal that while some proprietary models excel at answering questions, there is a notable and significant gap in their reasoning capabilities. This underscores the importance of incorporating CoT for more precise and effective assessments.",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by-sa/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://huggingface.co/datasets/wenyb/AgriCoT"
+    },
+    "about": [
+      {
+        "@type": "AI",
+        "name": "vision-language model"
+      },
+      {
+        "@type": "AI",
+        "name": "chain-of-thought benchmark"
+      }
+    ]
+  }
+  </script>
+  
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Sun Yat-sen University",
+    "url": "https://www.sysu.edu.cn/sysuen/",
+    "logo": "https://www.sysu.edu.cn/sysuen/images/logo.png",
+    "sameAs": [
+      "https://space.bilibili.com/1974749320?spm_id_from=333.337.0.0",
+    ]
+  }
+  </script>
+</head>
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">AgriCoT: A Chain-of-Thought Benchmark for Evaluating Reasoning in Vision-Language Models for Agriculture</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">Yibin Wen<sup>1,*</sup></span>&emsp;
+              <span class="author-block">Qingmei Li<sup>2,*</sup></span>&emsp;
+              <span class="author-block">Zi Ye<sup>1,*</sup></span>&emsp;
+              <span class="author-block">Jiarui Zhang<sup>1,*</sup></span>&emsp;
+              <span class="author-block">Jing Wu<sup>1</sup></span>&emsp;<br>
+              <span class="author-block">Zurong Mai<sup>1</sup></span>&emsp;
+              <span class="author-block">Shuohong Lou<sup>1</sup></span>&emsp;
+              <span class="author-block">Yuhang Chen<sup>1</sup></span>&emsp;
+              <span class="author-block">Henglian Huang<sup>1</sup></span>&emsp;
+              <span class="author-block">Xiaoya Fan<sup>3</sup></span>&emsp;<br>
+              <span class="author-block">Yang Zhang<sup>1</sup></span>&emsp;
+              <span class="author-block">Lingyuan Zhao<sup>4</sup></span>&emsp;
+              <span class="author-block">Haohuan Fu<sup>2,7</sup></span>&emsp;
+              <span class="author-block">Huang Jianxi<sup>5,6</sup></span>&emsp;
+              <span class="author-block">Juepeng Zheng<sup>1,7,&dagger;</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup> Sun Yat-sen University &emsp; <sup>2</sup> Tsinghua University &emsp; <sup>3</sup> Southwest University</span><br>
+              <span class="author-block"><sup>4</sup> HuanTian Wisdom Technology Co., Ltd. &emsp; <sup>5</sup> China Agricultural University</span><br>
+              <span class="author-block"><sup>6</sup> Southwest Jiaotong University &emsp; <sup>7</sup> National Supercomputing Center in Shenzhen</span><br>
+              <span class="eql-cntrb"><small><br><sup>*</sup> Equal contribution &emsp; <sup>&dagger;</sup> Corresponding author</small></span>
+            </div>  
+
+
+                  <!-- TODO: Update with your arXiv paper ID -->
+                    <span class="link-block">
+                      <a href="https://arxiv.org/abs/2511.23253" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>Paper (arXiv)</span>
+                    </a>
+                  </span>
+
+                  <!-- TODO: Replace with your GitHub repository URL -->
+                  <span class="link-block">
+                    <a href="https://huggingface.co/datasets/wenyb/AgriCoT" target="_blank"
+                    class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <img src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg" alt="Hugging Face" style="width:1em;height:1em;vertical-align:middle;">
+                    </span>
+                    <span>Dataset</span>
+                  </a>
+                </span>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <!-- TODO: Replace with your paper abstract -->
+          <p>
+            Recent advancements in Vision-Language Models (VLMs) have significantly transformed various industries. In agriculture, these dual-modal capabilities offer promising applications such as precision farming, crop monitoring, pest detection, and environmental sustainability. While several Visual Question Answering (VQA) datasets and benchmarks have been developed to evaluate VLM performance, they often fail to adequately assess the critical reasoning and problem-solving skills required in complex agricultural contexts. To address this gap, we introduce AgriCoT, a VQA dataset that incorporates Chain-of-Thought (CoT) reasoning, specifically designed to evaluate the reasoning capabilities of VLMs. With 4,535 carefully curated samples, AgriCoT offers a comprehensive and robust evaluation of reasoning abilities for VLMs, particularly in zero-shot scenarios, by focusing on their capacity to engage in logical reasoning and effective problem-solving. Our evaluations, conducted with 26 representative VLMs, including both proprietary and open-source models, reveal that while some proprietary models excel at answering questions, there is a notable and significant gap in their reasoning capabilities. This underscores the importance of incorporating CoT for more precise and effective assessments.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- End paper abstract -->
+
+<!-- Case Studies -->
+<section class="section hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Case Samples</h2>
+      <div id="results-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- TODO: Replace with your research result images -->
+        <img src="static\images\cases\Plant_Management.jpg" alt="Plant Management" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\cases\Organism_Identification.jpg" alt="Organism Identification" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\cases\Anomaly_Detection.jpg" alt="Anomaly Detection" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\cases\Organism_Counting.jpg" alt="Organism Counting" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\cases\Regional_Counting.jpg" alt="Regional Counting" loading="lazy"/>   
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Morphological_Statistics.jpg" alt="Morphological Statistics" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Pest_Recognition.jpg" alt="Pest Recognition" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Disease_Diagnosis.jpg" alt="Disease Diagnosis" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\BioMorph_Identification.jpg" alt="BioMorph Identification" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Spatial_Relationship.jpg" alt="Spatial Relationship" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Boundary_Analysis.jpg" alt="Boundary Analysis" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Area_Evaluation.jpg" alt="Area Evaluation" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Agri-Tools.jpg" alt="Agri-Tools" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Agri-Methods.jpg" alt="Agri-Methods" loading="lazy"/>
+      </div>
+      <div class="item">
+      <!-- Your image here -->
+      <img src="static\images\cases\Management_Decisions.jpg" alt="Management Decisions" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- End image carousel -->
+
+<!-- Innovation -->
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Key Features</h2>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div class="content has-text-centered">
+            <img src="static/images/features/table1.png" alt="table1" style="max-width:800px;width:100%;">
+          </div>
+
+          <div class="content has-text-centered">
+            <img src="static/images/features/innovation.jpg" alt="innovation" style="max-width:800px;width:100%;">
+          </div>
+          <div class="content has-text-justified">
+            <p>Compared with previous agricultural multimodal benchmarks, AgriCoT introduces four key advantages: <strong>Multi-step Reasoning</strong>, <strong>Multimodal Alignment</strong>, <strong>Long-form Reasoning</strong> and <strong>Reasoning Evaluation</strong>. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End Innovation -->
+
+
+<!-- Dimension -->
+<section class="section hero is-light">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Hierarchical Task System</h2>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div class="content has-text-centered">
+            <img src="static/images/features/overview.jpg" alt="overview" style="max-width:1000px;width:100%;">
+          </div>
+          
+          <div class="columns is-centered">
+            <div class="column is-half">
+              <div class="content has-text-centered">
+                <img src="static/images/features/overview-2.jpg" alt="overview-2" style="max-width:800px;width:100%;">
+              </div>
+            </div>
+            <div class="column is-half">
+              <div class="content has-text-centered">
+                <img src="static/images/features/lidar_fig.jpg" alt="lidar_fig" style="max-width:800px;width:100%;">
+              </div>
+            </div>
+          </div>
+
+          <div class="content has-text-justified">
+            <p>AgriCoT constructs <strong>five evaluation dimensions</strong> (such as object detection, quantitative analysis, disease monitoring, spatial understanding and environmental management), covering <strong>15 different and diverse task types</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End Dimension -->
+
+
+<!-- Data Construction -->
+<section class="section hero is-light">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Data Construction</h2>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div class="content has-text-centered">
+            <img src="static/images/features/curation.jpg" alt="curation" style="max-width:1000px;width:100%;">
+          </div>
+
+          <div class="content has-text-justified">
+            <p>The construction of AgriCoT benchmark primarily comprises <strong>four steps</strong>: collecting samples from data sources, ensuring the quality of the samples, generating a CoT for each QA pair, and conducting a comprehensive evaluation of the representative VLMs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End Data Construction -->
+
+
+<!-- Statistics -->
+<section class="section hero is-light">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Statistics</h2>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div class="content has-text-centered">
+            <img src="static/images/features/statistics.jpg" alt="statistics" style="max-width:1000px;width:100%;">
+          </div>
+          
+          <div class="content has-text-justified">
+            <p>Statistics of AgriCoT, from <strong>three perspectives</strong>: the distribution of question types across steps and dimensions, the number of steps and length distribution of CoTs, and word cloud analysis of both questions and CoTs.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End Dimension -->
+
+
+
+<!-- Experiment -->
+<section class="section hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">Experiment Results</h2>
+      <div id="experiment-carousel" class="carousel results-carousel">
+       <div class="item">
+        <!-- TODO: Replace with your research result images -->
+        <img src="static\images\experiment\table2.png" alt="table2" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\experiment\table5.png" alt="table5" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\experiment\table6.png" alt="table6" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\experiment\table7.png" alt="table7" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\experiment\table8.png" alt="table8" loading="lazy"/> 
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\experiment\table9.png" alt="table9" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\experiment\table10.png" alt="table10" loading="lazy"/>
+      </div>
+      <div class="item">
+        <!-- Your image here -->
+        <img src="static\images\experiment\table11.png" alt="table11" loading="lazy"/>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+<!-- End Experiment -->
+
+
+<!-- Analysis -->
+<section class="section hero is-light">
+    <div class="container">
+      <h2 class="title is-3 has-text-centered">More Analysis</h2>
+      <div class="columns is-centered">
+        <div class="column is-10">
+          <div class="content has-text-centered">
+            <img src="static/images/experiment/experiment.jpg" alt="experiment" style="max-width:1200px;width:100%;">
+          </div>
+          
+          <div class="content has-text-justified">
+            <p> Performance and analysis of various VLMs across different perspectives, including model size, CoT length and CoT step conut.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+<!-- End Analysis -->
+
+
+<!--BibTex citation -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <div class="bibtex-header">
+        <h2 class="title">BibTeX</h2>
+        <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+          <i class="fas fa-copy"></i>
+          <span class="copy-text">Copy</span>
+        </button>
+      </div>
+        <pre id="bibtex-code">
+          <code>
+          @misc{wen2025agricotchainofthoughtbenchmarkevaluating,
+          title={AgriCoT: A Chain-of-Thought Benchmark for Evaluating Reasoning in Vision-Language Models for Agriculture}, 
+          author={Yibin Wen and Qingmei Li and Zi Ye and Jiarui Zhang and Jing Wu and Zurong Mai and Shuohong Lou and Yuhang Chen and Henglian Huang and Xiaoya Fan and Yang Zhang and Lingyuan Zhao and Haohuan Fu and Huang Jianxi and Juepeng Zheng},
+          year={2025},
+          eprint={2511.23253},
+          archivePrefix={arXiv},
+          primaryClass={cs.AI},
+          url={https://arxiv.org/abs/2511.23253}}
+          </code>
+        </pre>
+      </div>
+</section>
+<!--End BibTex citation -->
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+
+          <p>
+            This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+            You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license"  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
